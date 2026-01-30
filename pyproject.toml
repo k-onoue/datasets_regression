@@ -1,0 +1,32 @@
+[project]
+name = "benchmark-datasets"
+version = "1.0.0"
+description = "Automated dataset generation for regression benchmarks"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "scikit-learn>=1.3.0",
+    "ucimlrepo>=0.0.7",
+    "openpyxl>=3.1.0",
+    "kaggle>=1.6.0",
+    "beautifulsoup4>=4.12.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ipykernel>=6.29.0",
+    "jupyter>=1.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["scripts"]
+
+[tool.uv]
+dev-dependencies = []

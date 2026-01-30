@@ -90,7 +90,7 @@ def download_and_save_datasets(output_dir='temp'):
             'beam_draught_ratio', 'length_beam_ratio', 'froude_number',
             'residuary_resistance'
         ]
-        df = pd.read_csv(url, delim_whitespace=True, header=None, names=column_names)
+        df = pd.read_csv(url, sep=r'\s+', header=None, names=column_names)
         df.to_csv(os.path.join(output_dir, 'yacht_hydrodynamics.csv'), index=False)
         print(" -> Success: Saved yacht_hydrodynamics.csv")
     except Exception as e:
@@ -218,8 +218,9 @@ def process_dataset(source_file_path, output_dir, dataset_name, target_column, n
     
     df_clean = pd.concat([X_df, y_s], axis=1).dropna()
     
-    X = df_clean[X_df.columns].values
-    y = df_clean[standardized_target].values
+    # Create writable numpy arrays immediately
+    X = df_clean[X_df.columns].to_numpy(copy=True)
+    y = df_clean[standardized_target].to_numpy(copy=True)
 
     # --- Outlier Injection Logic ---
     if create_outliers:
@@ -244,9 +245,8 @@ def process_dataset(source_file_path, output_dir, dataset_name, target_column, n
 
 if __name__ == '__main__':
     source_dir = "source_data_xu_2024"
-    output_data_dir = 'dataset_xu_2024_v3'
+    output_data_dir = 'dataset_combined'
     num_splits = 10
-    
     print("\n" + "="*50)
     print("STEP 1: DOWNLOADING RAW DATASETS")
     print("="*50)
