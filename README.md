@@ -1,3 +1,11 @@
+The use of Boston dataset is not recommended for ethical issues.
+
+https://scikit-learn.org/1.1/modules/generated/sklearn.datasets.load_boston.html#:~:text=The%20Boston%20housing%20prices%20dataset%20has%20an%20ethical%20problem.%20You%20can%20refer%20to%20the%20documentation%20of%20this%20function%20for%20further%20details.
+
+I cannot change this repository for the reproduciblity of my previously published paper.
+
+https://proceedings.mlr.press/v300/onoue26a.html
+
 # Benchmark Datasets
 
 This repository contains scripts to automatically download, preprocess, and generate benchmark datasets for regression tasks.
